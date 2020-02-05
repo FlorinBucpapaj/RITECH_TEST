@@ -31,19 +31,19 @@ driver.FindElement(By.XPath("//a[contains(text(),'Author Management')]"));
 System.TimeSpan.FromSeconds(15));
             IWebElement CreateNewAuthor =    //User create new author by clicking the link "Create new author"
 wait.Until(ExpectedConditions.ElementToBeClickable
-                 ((By.XPath("/html/body/form/div[3]/div[2]/p/a"))));
+                 ((By.XPath("//a[contains(text(),'(Create new author)')]"))));   
             CreateNewAuthor.Click();
 
             IWebElement NameField =     //User adds a new author information with name and age, and inserts into the grid. 
-driver.FindElement(By.XPath("//*[@id='MainContent_txtName']"));
+driver.FindElement(By.XPath("//input[contains(@id,'Name')]"));     
             NameField.SendKeys(NameInput);
 
             IWebElement AgeField =
-driver.FindElement(By.XPath("//*[@id='MainContent_txtAge']"));
+driver.FindElement(By.XPath("//input[contains(@id,'Age')]"));      
             AgeField.SendKeys(AgeInput);
 
             IWebElement InsertAuthor =      //User click the "Insert" button
-driver.FindElement(By.XPath("/html/body/form/div[3]/div[2]/fieldset/input[1]"));
+driver.FindElement(By.XPath("//input[contains(@value,'Insert')]"));    
             InsertAuthor.Click();
 
             IWebElement AddedAuthor =       //User verifies the author has been added.
@@ -68,13 +68,13 @@ driver.FindElement(By.XPath("//*/tbody/tr[2]/td[5]/a"));
             EditFirstBook.Click();
 
             IWebElement AuthorList =    //User changes the author to the new one added in the test above.
-driver.FindElement(By.XPath("//*[@id='MainContent_ddlAuthor']"));
+driver.FindElement(By.XPath("//select[contains(@id,'Author')]"));   
             SelectElement Author = new SelectElement(AuthorList);
             string AuthorPicked = NewAuthor.NameInput;
             Author.SelectByText(AuthorPicked);
 
             IWebElement EditBook =      //User clicks the "Update" button.
-driver.FindElement(By.XPath("//*[@id='MainContent_btnSubmit']"));
+driver.FindElement(By.XPath("//input[contains(@value,'Update')]"));   
             EditBook.Click();
 
             IWebElement EditedBook =    //User verified the changes have been made in the grid.

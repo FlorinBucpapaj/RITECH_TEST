@@ -17,20 +17,20 @@ namespace WebDriver_CSharp_Example
 
             driver.Navigate().GoToUrl(homeURL);
 
-            IWebElement UsernameField =
-driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_UserName']"));
+            IWebElement UsernameField =     //User inputs "librarian" as username and password
+driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_UserName']"));  //alternate xpath: //input[contains(@id,'UserName')]
             new WebDriverWait(driver,
 System.TimeSpan.FromSeconds(15)).Until(ExpectedConditions.ElementToBeClickable(UsernameField));
             UsernameField.SendKeys("librarian");
 
             IWebElement PasswordField =
-driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_Password']"));
+driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_Password']"));  //alternate xpath: //input[contains(@id,'Password')]
             new WebDriverWait(driver,
 System.TimeSpan.FromSeconds(15)).Until(ExpectedConditions.ElementToBeClickable(PasswordField));
             PasswordField.SendKeys("librarian");
 
-            IWebElement LoginButton =
-driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_LoginButton']"));
+            IWebElement LoginButton =       //User clicks the "Login" button
+driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_LoginButton']"));   //alternate xpath: //input[contains(@id,'LoginButton')]
             LoginButton.Click();
             IWebElement BookManagementButton =
 driver.FindElement(By.XPath("//a[contains(text(),'Book Management')]"));

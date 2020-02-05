@@ -1,0 +1,14 @@
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+
+# All files
+[*]
+indent_style = space
+
+# Xml files
+[*.xml]
+indent_size = 2
+
+[*.cs]
+
+# IDE0025: Use expression body for properties
+csharp_style_expression_bodied_properties = when_on_single_line:silent

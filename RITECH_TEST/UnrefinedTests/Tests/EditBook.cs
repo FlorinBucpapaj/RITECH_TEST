@@ -2,38 +2,38 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using System;
+
 
 namespace WebDriver_CSharp_Example
 {
 
 
     [TestFixture]
-    public class NewBook
+    public class EditBook
     {
         private IWebDriver driver;
         public string homeURL;
 
 
-        [Test(Description = "User logins to the system and creates a new book")]
-        public void CreateBook()
+        [Test(Description = "User logins to the system and updates a book")]
+        public void UpdateBook()
         {
 
-            Librarian_Login.Login(driver, homeURL);     //User logins to the system.
+            Librarian_Login.Login(driver, homeURL); //User logins to the system.
 
-            IWebElement BookManagementButton = 
+            IWebElement BookManagementButton =
 driver.FindElement(By.XPath("//a[contains(text(),'Book Management')]"));
             BookManagementButton.Click();
 
-            WebDriverWait wait = new WebDriverWait(driver,
-System.TimeSpan.FromSeconds(15));
-            IWebElement CreateNewBook = wait.Until(ExpectedConditions.ElementToBeClickable       //User clicks the "Create new book" link.
-                 ((By.XPath("/ html / body / form / div[3] / div[2] / p / a"))));
-            CreateNewBook.Click();
+            IWebElement EditFirstBook =  //User clicks "Edit" link on the first book.
+driver.FindElement(By.XPath("//*/tbody/tr[2]/td[5]/a"));
+            EditFirstBook.Click();
 
-            IWebElement NameField =     //User gives the book name, author and genre for the new book.
-driver.FindElement(By.XPath("//*[@id='MainContent_txtName']"));
-            string NameInput = "Flori Test";
+
+            IWebElement NameField =     //User edits the information of the selected book.
+driver.FindElement(By.XPath("//*[@id='MainContent_txtName']")); //input[contains(@value,'Name')]
+            string NameInput = "Flori Edit Test";
+            NameField.Clear();
             NameField.SendKeys(NameInput);
 
             IWebElement AuthorList =
@@ -48,16 +48,20 @@ driver.FindElement(By.XPath("//*[@id='MainContent_ddlGenre']"));
             string GenrePicked = "Historical Fiction";
             Genre.SelectByText(GenrePicked);
 
-            IWebElement InsertBook =        //User clicks the "Insert" button.
+            IWebElement EditBook =    //User clicks the "Update" button
 driver.FindElement(By.XPath("//*[@id='MainContent_btnSubmit']"));
-            InsertBook.Click();
+            EditBook.Click();
 
-            IWebElement AddedBook =         //User verifies the new book has been added to the grid.
+
+            IWebElement EditedBook =    //User verifies the change on the grid.
 driver.FindElement(By.XPath($"//tr[td[contains(text(),'{NameInput}')] and td[contains(text(),'{AuthorPicked}')] and td[contains(text(),'{GenrePicked}')]]"));
-            bool status = AddedBook.Displayed;
+            bool status = EditedBook.Displayed;
             new WebDriverWait(driver,
-System.TimeSpan.FromSeconds(5)).Until(ExpectedConditions.ElementToBeClickable(AddedBook));
-          
+System.TimeSpan.FromSeconds(5)).Until(ExpectedConditions.ElementToBeClickable(EditedBook));
+
+
+
+
 
         }
 
