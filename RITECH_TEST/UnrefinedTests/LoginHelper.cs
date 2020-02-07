@@ -4,10 +4,10 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace WebDriver_CSharp_Example
+namespace RITECH_TEST.UnrefinedTests
 {
 
-//Helper class since login is repeated
+    //Helper class since login is repeated
     public class Librarian_Login
     {
 
@@ -20,13 +20,13 @@ namespace WebDriver_CSharp_Example
             IWebElement UsernameField =     //User inputs "librarian" as username and password
 driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_UserName']"));  //alternate xpath: //input[contains(@id,'UserName')]
             new WebDriverWait(driver,
-System.TimeSpan.FromSeconds(15)).Until(ExpectedConditions.ElementToBeClickable(UsernameField));
+TimeSpan.FromSeconds(15)).Until(ExpectedConditions.ElementToBeClickable(UsernameField));
             UsernameField.SendKeys("librarian");
 
             IWebElement PasswordField =
 driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_Password']"));  //alternate xpath: //input[contains(@id,'Password')]
             new WebDriverWait(driver,
-System.TimeSpan.FromSeconds(15)).Until(ExpectedConditions.ElementToBeClickable(PasswordField));
+TimeSpan.FromSeconds(15)).Until(ExpectedConditions.ElementToBeClickable(PasswordField));
             PasswordField.SendKeys("librarian");
 
             IWebElement LoginButton =       //User clicks the "Login" button
@@ -34,7 +34,7 @@ driver.FindElement(By.XPath("//*[@id='MainContent_LoginUser_LoginButton']"));   
             LoginButton.Click();
             IWebElement BookManagementButton =
 driver.FindElement(By.XPath("//a[contains(text(),'Book Management')]"));
-            Boolean status = BookManagementButton.Displayed;
+            bool status = BookManagementButton.Displayed;
 
         }
 

@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace WebDriver_CSharp_Example
+namespace RITECH_TEST.UnrefinedTests
 {
 
 
