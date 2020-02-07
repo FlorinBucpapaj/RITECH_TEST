@@ -83,6 +83,8 @@ driver.FindElement(By.XPath($"//tr[td[contains(text(),'{AuthorPicked}')]]"));
             new WebDriverWait(driver,
 System.TimeSpan.FromSeconds(5)).Until(ExpectedConditions.ElementToBeClickable(EditedBook));
 
+            driver.Close();
+
         }
 
     }  

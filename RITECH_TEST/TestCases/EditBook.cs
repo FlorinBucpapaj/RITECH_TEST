@@ -3,19 +3,17 @@ using RITECH_TEST.PageObjects;
 using System.Configuration;
 using RITECH_TEST.WrapperFactory;
 using OpenQA.Selenium;
+using System;
 
 namespace RITECH_TEST.TestCases
 {
     [TestFixture]
-    public class EditBook
+    class EditBook
     {
 
-        [SetUp]
-        public void SetUp()
-        {
-            BrowserFactory.InitBrowser("Chrome");
-            BrowserFactory.LoadApplication(ConfigurationManager.AppSettings["URL"]);
-        }
+        
+
+
 
         [Test]
         public void Edit()
@@ -32,7 +30,16 @@ namespace RITECH_TEST.TestCases
         [TearDown]
         public void TearDownTest()
         {
-            BrowserFactory.CloseAllDrivers();
+            BrowserFactory.Driver.Quit();
         }
+
+        [SetUp]
+        public void SetUp()
+        {
+            BrowserFactory.InitBrowser("Chrome");
+            BrowserFactory.LoadApplication(ConfigurationManager.AppSettings["URL"]);
+            BrowserFactory.LoadPage();
+        }
+
     }
 }

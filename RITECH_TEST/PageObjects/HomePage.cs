@@ -6,9 +6,9 @@ namespace RITECH_TEST.PageObjects
 {
     public class HomePage
     {
-        //private IWebDriver driver;
 
-        [FindsBy(How = How.LinkText, Using = "Book Management")][CacheLookup]
+        [FindsBy(How = How.LinkText, Using = "Book Management")]
+        [CacheLookup]
         private IWebElement BookManagement { get; set; }
 
         [FindsBy(How = How.LinkText, Using = "Author Management")]

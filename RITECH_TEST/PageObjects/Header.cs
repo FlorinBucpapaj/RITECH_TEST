@@ -6,7 +6,6 @@ namespace RITECH_TEST.PageObjects
 {
     public class Header
     {
-        //private IWebDriver driver;
 
         [FindsBy(How = How.LinkText, Using = "Book Management")]
         [CacheLookup]

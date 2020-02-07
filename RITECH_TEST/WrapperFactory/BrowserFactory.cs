@@ -34,11 +34,23 @@ namespace RITECH_TEST.WrapperFactory
                         driver = new FirefoxDriver();
                         Drivers.Add("Firefox", Driver);
                     }
+                    else if (Driver != null)
+                    {
+                        Drivers.Clear();
+                        driver = new FirefoxDriver(@"C:\PathTo\FirefoxDriverServer");
+                        Drivers.Add("Firefox", Driver);
+                    }
                     break;
 
                 case "IE":
                     if (Driver == null)
                     {
+                        driver = new InternetExplorerDriver(@"C:\PathTo\IEDriverServer");
+                        Drivers.Add("IE", Driver);
+                    }
+                    else if (Driver != null)
+                    {
+                        Drivers.Clear();
                         driver = new InternetExplorerDriver(@"C:\PathTo\IEDriverServer");
                         Drivers.Add("IE", Driver);
                     }
@@ -50,6 +62,13 @@ namespace RITECH_TEST.WrapperFactory
                         driver = new ChromeDriver(@"E:\Downloads");
                         Drivers.Add("Chrome", Driver);
                     }
+                    else if (Driver != null)
+                    {
+                        Drivers.Clear();
+                        driver = new ChromeDriver(@"E:\Downloads");
+                        Drivers.Add("Chrome", Driver);
+                    }
+
                     break;
             }
         }
@@ -74,6 +93,11 @@ namespace RITECH_TEST.WrapperFactory
 
         }
 
+        public static void LoadPage() { 
+
+        Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
+           
+        }
        
 
     }

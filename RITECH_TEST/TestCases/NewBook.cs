@@ -2,18 +2,17 @@
 using RITECH_TEST.PageObjects;
 using System.Configuration;
 using RITECH_TEST.WrapperFactory;
+using System;
 
 namespace RITECH_TEST.TestCases
 {
+    [TestFixture]
     class NewBook
     {
 
         [Test]
         public void Test()
         {
-
-            BrowserFactory.InitBrowser("Chrome");
-            BrowserFactory.LoadApplication(ConfigurationManager.AppSettings["URL"]);
 
             Page.Login.LoginToApplication();
             Page.Home.ClickBookManagement();
@@ -22,6 +21,20 @@ namespace RITECH_TEST.TestCases
             Page.bookManagement.VerifyCreatedBook();
 
             BrowserFactory.CloseAllDrivers();
+        }
+
+        [TearDown]
+        public void TearDownTest()
+        {
+            BrowserFactory.Driver.Quit();
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+            BrowserFactory.InitBrowser("Chrome");
+            BrowserFactory.LoadApplication(ConfigurationManager.AppSettings["URL"]);
+            BrowserFactory.LoadPage();
         }
     }
 }
